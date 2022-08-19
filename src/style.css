@@ -1,1 +1,50 @@
 @import "~bootstrap/dist/css/bootstrap.min.css";
+
+:root {
+  font-size: 100px;
+}
+body {
+  background-color: green;
+  font-family: "Prata", serif;
+}
+
+.card {
+  width: 350px;
+  height: 500px;
+  margin: 50px auto;
+  align-items: center;
+  justify-content: center;
+}
+
+.card span:first-child,
+span:last-child {
+  padding: 20px;
+  font-size: 120px;
+  position: absolute;
+}
+
+.card span:first-child {
+  align-self: flex-start;
+  top: -55px;
+}
+
+.card span:nth-child(2) {
+  font-size: 170px;
+  color: black;
+}
+
+.card span:last-child {
+  align-self: flex-end;
+  bottom: -55px;
+  transform: rotate(180deg);
+}
+
+.diamond,
+.heart {
+  color: red;
+}
+
+.spade,
+.club {
+  color: black;
+}
