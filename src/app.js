@@ -27,19 +27,27 @@ const numbers = [
   "K"
 ];
 
-const genRandom = array => {
+let card = document.querySelector("div");
+let number = document.querySelectorAll("span")[1];
+let upperSymbol = document.querySelectorAll("span")[0];
+let lowerSymbol = document.querySelectorAll("span")[2];
+let currentSuitName = "";
+
+const genRandomNum = array => {
   return Math.floor(Math.random() * array.length);
 };
 
-window.onload = function() {
-  //write your code here
-  let card = document.querySelector("div");
-  let suit = suits[genRandom(suits)];
-  card.classList.add(suit.name);
-  let number = document.querySelectorAll("span")[1];
-  number.innerHTML = numbers[genRandom(numbers)];
-  let upperSymbol = document.querySelectorAll("span")[0];
-  let lowerSymbol = document.querySelectorAll("span")[2];
+const generateRandomCard = () => {
+  let suit = suits[genRandomNum(suits)];
+  if (currentSuitName) {
+    card.classList.remove(currentSuitName);
+  }
+  currentSuitName = suit.name;
+  card.classList.add(currentSuitName);
+  number.innerHTML = numbers[genRandomNum(numbers)];
   upperSymbol.innerHTML = suit.symbol;
   lowerSymbol.innerHTML = suit.symbol;
 };
+
+window.onload = generateRandomCard;
+window.generate = generateRandomCard;

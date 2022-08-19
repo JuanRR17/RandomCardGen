@@ -1,19 +1,27 @@
 @import "~bootstrap/dist/css/bootstrap.min.css";
 
-:root {
+/* :root {
   font-size: 100px;
-}
+} */
 body {
   background-color: green;
   font-family: "Prata", serif;
+  text-align: center;
+}
+
+button {
+  font-size: 20px;
+  margin: 30px;
+  padding: 10px;
 }
 
 .card {
   width: 350px;
   height: 500px;
-  margin: 50px auto;
+  margin: auto;
   align-items: center;
   justify-content: center;
+  border-radius: 30px;
 }
 
 .card span:first-child,
