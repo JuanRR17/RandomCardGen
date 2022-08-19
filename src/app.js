@@ -49,5 +49,9 @@ const generateRandomCard = () => {
   lowerSymbol.innerHTML = suit.symbol;
 };
 
-window.onload = generateRandomCard;
+window.onload = () => {
+  generateRandomCard();
+};
+
+window.setInterval(generateRandomCard, 10000);
 window.generate = generateRandomCard;
