@@ -1,12 +1,21 @@
 @import "~bootstrap/dist/css/bootstrap.min.css";
+:root {
+  --cardWidth: 350px;
+  --cardHeight: 500px;
+}
 
-/* :root {
-  font-size: 100px;
-} */
 body {
   background-color: green;
   font-family: "Prata", serif;
   text-align: center;
+}
+
+.input-group {
+  width: 200px;
+}
+
+.input-group span {
+  width: 100px;
 }
 
 button {
@@ -16,34 +25,33 @@ button {
 }
 
 .card {
-  width: 350px;
-  height: 500px;
+  width: var(--cardWidth);
+  height: var(--cardHeight);
   margin: auto;
   align-items: center;
   justify-content: center;
-  border-radius: 30px;
+  border-radius: calc(var(--cardHeight) * 0.06);
 }
 
 .card span:first-child,
 span:last-child {
-  padding: 20px;
-  font-size: 120px;
+  padding: calc(var(--cardHeight) * 0.04);
+  font-size: calc(var(--cardHeight) * 0.24);
   position: absolute;
 }
 
 .card span:first-child {
   align-self: flex-start;
-  top: -55px;
+  top: calc(var(--cardHeight) * -0.11);
 }
 
 .card span:nth-child(2) {
-  font-size: 170px;
-  color: black;
+  font-size: calc(var(--cardHeight) * 0.34);
 }
 
 .card span:last-child {
   align-self: flex-end;
-  bottom: -55px;
+  bottom: calc(var(--cardHeight) * -0.11);
   transform: rotate(180deg);
 }
 

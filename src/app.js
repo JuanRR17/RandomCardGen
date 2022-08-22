@@ -2,7 +2,6 @@
 import "bootstrap";
 import "./style.css";
 
-import "./assets/img/rigo-baby.jpg";
 import "./assets/img/4geeks.ico";
 
 const suits = [
@@ -28,10 +27,14 @@ const numbers = [
 ];
 
 let card = document.querySelector("div");
-let number = document.querySelectorAll("span")[1];
-let upperSymbol = document.querySelectorAll("span")[0];
-let lowerSymbol = document.querySelectorAll("span")[2];
+let cardSpans = document.querySelectorAll(".card>span");
+let number = cardSpans[1];
+let upperSymbol = cardSpans[0];
+let lowerSymbol = cardSpans[2];
 let currentSuitName = "";
+
+const width = document.querySelector("#width");
+const height = document.querySelector("#height");
 
 const genRandomNum = array => {
   return Math.floor(Math.random() * array.length);
@@ -39,19 +42,42 @@ const genRandomNum = array => {
 
 const generateRandomCard = () => {
   let suit = suits[genRandomNum(suits)];
+  //suit = { name: "spade", symbol: "♠" }
   if (currentSuitName) {
     card.classList.remove(currentSuitName);
   }
+
   currentSuitName = suit.name;
+  //currentSuitName = spade
   card.classList.add(currentSuitName);
   number.innerHTML = numbers[genRandomNum(numbers)];
   upperSymbol.innerHTML = suit.symbol;
   lowerSymbol.innerHTML = suit.symbol;
 };
 
-window.onload = () => {
-  generateRandomCard();
+const changeHeight = () => {
+  if (height.value) {
+    document.documentElement.style.setProperty(
+      "--cardHeight",
+      `${height.value}px`
+    );
+  }
+  // height.value = null;
 };
 
+const changeWidth = () => {
+  if (width.value) {
+    document.documentElement.style.setProperty(
+      "--cardWidth",
+      `${width.value}px`
+    );
+  }
+  // width.value = null;
+};
+
+window.onload = generateRandomCard;
 window.setInterval(generateRandomCard, 10000);
 window.generate = generateRandomCard;
+
+window.changeWidth = changeWidth;
+window.changeHeight = changeHeight;

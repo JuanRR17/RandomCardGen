@@ -17,6 +17,28 @@
     />
   </head>
   <body>
+    <div class="input-group mt-3 m-auto">
+      <span class="input-group-text">Width(px)</span>
+      <input
+        id="width"
+        onchange="changeWidth()"
+        type="text"
+        class="form-control"
+        placeholder="width"
+        aria-label="Width"
+      />
+    </div>
+    <div class="input-group m-auto">
+      <span class="input-group-text">Height(px)</span>
+      <input
+        id="height"
+        onchange="changeHeight()"
+        type="text"
+        class="form-control"
+        placeholder="height"
+        aria-label="Height"
+      />
+    </div>
     <button id="generator" onclick="generate()">Generate Card!</button>
     <div class="card">
       <span></span>
