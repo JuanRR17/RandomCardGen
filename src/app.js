@@ -26,12 +26,13 @@ const numbers = [
   "K"
 ];
 
-let card = document.querySelector("div");
+let card = document.querySelector(".card");
 let cardSpans = document.querySelectorAll(".card>span");
 let number = cardSpans[1];
 let upperSymbol = cardSpans[0];
 let lowerSymbol = cardSpans[2];
 let currentSuitName = "";
+console.log(number);
 
 const width = document.querySelector("#width");
 const height = document.querySelector("#height");
@@ -42,42 +43,35 @@ const genRandomNum = array => {
 
 const generateRandomCard = () => {
   let suit = suits[genRandomNum(suits)];
-  //suit = { name: "spade", symbol: "♠" }
   if (currentSuitName) {
     card.classList.remove(currentSuitName);
   }
-
   currentSuitName = suit.name;
-  //currentSuitName = spade
   card.classList.add(currentSuitName);
   number.innerHTML = numbers[genRandomNum(numbers)];
   upperSymbol.innerHTML = suit.symbol;
   lowerSymbol.innerHTML = suit.symbol;
 };
 
-const changeHeight = () => {
-  if (height.value) {
-    document.documentElement.style.setProperty(
-      "--cardHeight",
-      `${height.value}px`
-    );
+const changeDim = dim => {
+  if (dim === "h") {
+    if (height.value) {
+      document.documentElement.style.setProperty(
+        "--cardHeight",
+        `${parseInt(height.value)}px`
+      );
+    }
+  } else if (dim === "w") {
+    if (width.value) {
+      document.documentElement.style.setProperty(
+        "--cardWidth",
+        `${parseInt(width.value)}px`
+      );
+    }
   }
-  // height.value = null;
-};
-
-const changeWidth = () => {
-  if (width.value) {
-    document.documentElement.style.setProperty(
-      "--cardWidth",
-      `${width.value}px`
-    );
-  }
-  // width.value = null;
 };
 
 window.onload = generateRandomCard;
 window.setInterval(generateRandomCard, 10000);
 window.generate = generateRandomCard;
-
-window.changeWidth = changeWidth;
-window.changeHeight = changeHeight;
+window.changeDim = changeDim;
