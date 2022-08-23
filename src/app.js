@@ -26,19 +26,31 @@ const numbers = [
   "K"
 ];
 
-let card = document.querySelector(".card");
-let cardSpans = document.querySelectorAll(".card>span");
-let number = cardSpans[1];
-let upperSymbol = cardSpans[0];
-let lowerSymbol = cardSpans[2];
-let currentSuitName = "";
-console.log(number);
-
 const width = document.querySelector("#width");
 const height = document.querySelector("#height");
 
+let card;
+let number;
+let upperSymbol;
+let lowerSymbol;
+
+let currentSuitName = "";
+
 const genRandomNum = array => {
   return Math.floor(Math.random() * array.length);
+};
+
+const generateBlankCard = () => {
+  card = document.createElement("div");
+  upperSymbol = document.createElement("span");
+  number = document.createElement("span");
+  lowerSymbol = document.createElement("span");
+
+  card.classList.add("card");
+  card.append(upperSymbol);
+  card.append(number);
+  card.append(lowerSymbol);
+  document.querySelector("body").append(card);
 };
 
 const generateRandomCard = () => {
@@ -71,7 +83,11 @@ const changeDim = dim => {
   }
 };
 
-window.onload = generateRandomCard;
 window.setInterval(generateRandomCard, 10000);
-window.generate = generateRandomCard;
+window.generate = () => {
+  if (!card) {
+    generateBlankCard();
+  }
+  generateRandomCard();
+};
 window.changeDim = changeDim;
